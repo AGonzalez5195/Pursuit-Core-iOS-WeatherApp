@@ -40,18 +40,18 @@ class DetailViewController: UIViewController {
     }()
     
     lazy var windSpeedLabel: UILabel = {
-          let label = UILabel()
-          label.font = UIFont.systemFont(ofSize: 16)
-          label.textAlignment = .center
-          return label
-      }()
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textAlignment = .center
+        return label
+    }()
     
     lazy var precipitationLabel: UILabel = {
-          let label = UILabel()
-          label.font = UIFont.systemFont(ofSize: 16)
-          label.textAlignment = .center
-          return label
-      }()
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 16)
+        label.textAlignment = .center
+        return label
+    }()
     
     lazy var labelStackView: UIStackView = {
         let stackView = UIStackView(arrangedSubviews: [sunriseLabel, sunsetLabel, lowTemperatureLabel, highTemperatureLabel, windSpeedLabel, precipitationLabel])
@@ -93,7 +93,7 @@ class DetailViewController: UIViewController {
     }
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer? = nil) {
-    
+        
         let photosVC = PhotosViewController()
         photosVC.photos = photos
         
@@ -114,18 +114,24 @@ class DetailViewController: UIViewController {
     }
     
     private func loadImage() {
-        
-        ImageHelper.shared.getImage(urlStr: photos[0].largeImageURL) { (result) in
-            DispatchQueue.main.async {
-                switch result {
-                case .failure(let error):
-                    print(error)
-                case .success(let imageFromOnline):
-                    self.locationImageView.image = imageFromOnline
+        if photos.isEmpty == true {
+            locationImageView.image = UIImage(named: "\(currentForecast.icon)")
+            locationImageView.isUserInteractionEnabled = false
+     
+        } else {
+            ImageHelper.shared.getImage(urlStr: photos[0].largeImageURL) { (result) in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .failure(let error):
+                       print(error)
+                    case .success(let imageFromOnline):
+                        self.locationImageView.image = imageFromOnline
+                    }
                 }
             }
         }
     }
+    
     
     
     private func configureUI() {

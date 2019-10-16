@@ -20,10 +20,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let viewController = ViewController()
+        let favoritesViewController = FavoritesViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
         let tabBarController = UITabBarController()
-        tabBarController.viewControllers = [navigationController]
+        tabBarController.viewControllers = [navigationController, favoritesViewController]
         navigationController.tabBarItem.title = "Search"
+        favoritesViewController.tabBarItem.title = "Favorites"
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = tabBarController

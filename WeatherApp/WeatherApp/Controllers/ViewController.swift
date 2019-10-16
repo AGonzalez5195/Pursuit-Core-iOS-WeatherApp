@@ -72,6 +72,7 @@ class ViewController: UIViewController {
         setTextFieldConstraints()
     }
     
+    
     private func setCollectionViewConstraints() {
         NSLayoutConstraint.activate([
             weatherCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 170),
@@ -152,7 +153,6 @@ extension ViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let specificWeatherForecast = weatherData[indexPath.row]
         let weatherCell = weatherCollectionView.dequeueReusableCell(withReuseIdentifier: "weatherCell", for: indexPath) as! WeatherCollectionViewCell
-        
         weatherCell.configureCell(from: specificWeatherForecast)
         
         return weatherCell
