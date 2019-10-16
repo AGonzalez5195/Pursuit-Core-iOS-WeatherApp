@@ -135,6 +135,8 @@ class DetailViewController: UIViewController {
         })
     }
     
+  
+    
     private func loadImage() {
         if photos.isEmpty == true {
             locationImageView.image = UIImage(named: "\(currentForecast.icon)")
@@ -147,8 +149,9 @@ class DetailViewController: UIViewController {
                     case .failure(let error):
                         print(error)
                     case .success(let imageFromOnline):
-                        
-                        self.locationImageView.image = imageFromOnline
+                        UIView.transition(with: self.locationImageView, duration: 4, options: [.transitionCrossDissolve, .curveEaseInOut], animations: {
+                            self.locationImageView.image = imageFromOnline
+                        }, completion: nil)
                         
                     }
                 }
