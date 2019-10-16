@@ -15,6 +15,10 @@
 		548CE066234D33E600B5177D /* ZipCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548CE065234D33E600B5177D /* ZipCodeHelper.swift */; };
 		548CE068234D340700B5177D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548CE067234D340700B5177D /* Assets.xcassets */; };
 		97E936CB2356271400154A7C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E936CA2356271400154A7C /* Secret.swift */; };
+		97E936CE2356286D00154A7C /* NetworkHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E936CD2356286D00154A7C /* NetworkHelper.swift */; };
+		97E936D02356288D00154A7C /* DarkSkyAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E936CF2356288D00154A7C /* DarkSkyAPIManager.swift */; };
+		97E936D32356298F00154A7C /* DarkSkyWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E936D22356298F00154A7C /* DarkSkyWeather.swift */; };
+		97E936D52356517F00154A7C /* WeatherCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E936D42356517F00154A7C /* WeatherCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +32,10 @@
 		548CE065234D33E600B5177D /* ZipCodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCodeHelper.swift; sourceTree = "<group>"; };
 		548CE067234D340700B5177D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97E936CA2356271400154A7C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		97E936CD2356286D00154A7C /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
+		97E936CF2356288D00154A7C /* DarkSkyAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyAPIManager.swift; sourceTree = "<group>"; };
+		97E936D22356298F00154A7C /* DarkSkyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyWeather.swift; sourceTree = "<group>"; };
+		97E936D42356517F00154A7C /* WeatherCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,14 +71,34 @@
 				548CE051234D33B500B5177D /* AppDelegate.swift */,
 				548CE053234D33B500B5177D /* SceneDelegate.swift */,
 				548CE065234D33E600B5177D /* ZipCodeHelper.swift */,
+				97E936D12356297D00154A7C /* Models */,
 				548CE055234D33B500B5177D /* ViewController.swift */,
 				97E936CA2356271400154A7C /* Secret.swift */,
+				97E936CC2356280500154A7C /* Network */,
 				548CE057234D33B500B5177D /* Main.storyboard */,
 				548CE05C234D33B600B5177D /* LaunchScreen.storyboard */,
 				548CE067234D340700B5177D /* Assets.xcassets */,
 				548CE05F234D33B600B5177D /* Info.plist */,
 			);
 			path = WeatherApp;
+			sourceTree = "<group>";
+		};
+		97E936CC2356280500154A7C /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				97E936CD2356286D00154A7C /* NetworkHelper.swift */,
+				97E936CF2356288D00154A7C /* DarkSkyAPIManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		97E936D12356297D00154A7C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				97E936D22356298F00154A7C /* DarkSkyWeather.swift */,
+				97E936D42356517F00154A7C /* WeatherCollectionViewCell.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,10 +172,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				97E936D52356517F00154A7C /* WeatherCollectionViewCell.swift in Sources */,
+				97E936D32356298F00154A7C /* DarkSkyWeather.swift in Sources */,
 				548CE066234D33E600B5177D /* ZipCodeHelper.swift in Sources */,
 				97E936CB2356271400154A7C /* Secret.swift in Sources */,
+				97E936D02356288D00154A7C /* DarkSkyAPIManager.swift in Sources */,
 				548CE056234D33B500B5177D /* ViewController.swift in Sources */,
 				548CE052234D33B500B5177D /* AppDelegate.swift in Sources */,
+				97E936CE2356286D00154A7C /* NetworkHelper.swift in Sources */,
 				548CE054234D33B500B5177D /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
