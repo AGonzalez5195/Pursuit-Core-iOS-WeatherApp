@@ -166,6 +166,7 @@ extension ViewController: UICollectionViewDelegate {
         let detailVC = DetailViewController()
         let selectedForecast = weatherData[indexPath.row]
         detailVC.currentForecast = selectedForecast
+        detailVC.locationName = locationName!
         
         self.navigationController?
             .pushViewController(detailVC, animated: true)

@@ -14,6 +14,9 @@
 		548CE05E234D33B600B5177D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 548CE05C234D33B600B5177D /* LaunchScreen.storyboard */; };
 		548CE066234D33E600B5177D /* ZipCodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548CE065234D33E600B5177D /* ZipCodeHelper.swift */; };
 		548CE068234D340700B5177D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 548CE067234D340700B5177D /* Assets.xcassets */; };
+		97301F912356D03500288B13 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97301F902356D03500288B13 /* ImageHelper.swift */; };
+		97301F932356D18600288B13 /* PixabayPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97301F922356D18600288B13 /* PixabayPhoto.swift */; };
+		97301F952356D1BC00288B13 /* PixabayAPIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97301F942356D1BC00288B13 /* PixabayAPIManager.swift */; };
 		9776E9182356BA3400E48393 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9776E9172356BA3400E48393 /* PersistenceHelper.swift */; };
 		9776E91F2356BD6500E48393 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9776E91E2356BD6500E48393 /* DetailViewController.swift */; };
 		97E936CB2356271400154A7C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E936CA2356271400154A7C /* Secret.swift */; };
@@ -33,6 +36,9 @@
 		548CE05F234D33B600B5177D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		548CE065234D33E600B5177D /* ZipCodeHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZipCodeHelper.swift; sourceTree = "<group>"; };
 		548CE067234D340700B5177D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		97301F902356D03500288B13 /* ImageHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; };
+		97301F922356D18600288B13 /* PixabayPhoto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayPhoto.swift; sourceTree = "<group>"; };
+		97301F942356D1BC00288B13 /* PixabayAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayAPIManager.swift; sourceTree = "<group>"; };
 		9776E9172356BA3400E48393 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		9776E91E2356BD6500E48393 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		97E936CA2356271400154A7C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
@@ -110,6 +116,8 @@
 			children = (
 				97E936CD2356286D00154A7C /* NetworkHelper.swift */,
 				97E936CF2356288D00154A7C /* DarkSkyAPIManager.swift */,
+				97301F942356D1BC00288B13 /* PixabayAPIManager.swift */,
+				97301F902356D03500288B13 /* ImageHelper.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -119,6 +127,7 @@
 			children = (
 				97E936D22356298F00154A7C /* DarkSkyWeather.swift */,
 				97E936D42356517F00154A7C /* WeatherCollectionViewCell.swift */,
+				97301F922356D18600288B13 /* PixabayPhoto.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,10 +210,13 @@
 				9776E9182356BA3400E48393 /* PersistenceHelper.swift in Sources */,
 				97E936CB2356271400154A7C /* Secret.swift in Sources */,
 				97E936D02356288D00154A7C /* DarkSkyAPIManager.swift in Sources */,
+				97301F932356D18600288B13 /* PixabayPhoto.swift in Sources */,
 				548CE056234D33B500B5177D /* ViewController.swift in Sources */,
+				97301F952356D1BC00288B13 /* PixabayAPIManager.swift in Sources */,
 				548CE052234D33B500B5177D /* AppDelegate.swift in Sources */,
 				97E936CE2356286D00154A7C /* NetworkHelper.swift in Sources */,
 				548CE054234D33B500B5177D /* SceneDelegate.swift in Sources */,
+				97301F912356D03500288B13 /* ImageHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

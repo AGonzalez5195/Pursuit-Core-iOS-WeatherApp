@@ -20,6 +20,8 @@ struct WeatherForecast: Codable {
     let icon: String
     let temperatureHigh: Double
     let temperatureLow: Double
+    let windSpeed: Double
+    let precipIntensityMax: Double
     let time: Int
     let sunriseTime: Int
     let sunsetTime: Int
@@ -31,7 +33,6 @@ struct WeatherForecast: Codable {
     
     static func convertUNIXTimeToReadableTime(unixTime: Int) -> String {
         let date = Date(timeIntervalSince1970: TimeInterval(unixTime))
-        
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "EDT")
         dateFormatter.locale = NSLocale.current
