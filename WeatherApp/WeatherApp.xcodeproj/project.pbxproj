@@ -48,10 +48,10 @@
 		97301F982356E55100288B13 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		97301F9A2356E58900288B13 /* PixabayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayCollectionViewCell.swift; sourceTree = "<group>"; };
 		97301F9C2356ED8100288B13 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
-		97301F9E2357784600288B13 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsWrapper.swift; path = Controllers/UserDefaultsWrapper.swift; sourceTree = "<group>"; };
+		97301F9E2357784600288B13 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9776E9172356BA3400E48393 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		9776E91E2356BD6500E48393 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		97E936CA2356271400154A7C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
+		97E936CA2356271400154A7C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Secret.swift; path = ../Secret.swift; sourceTree = "<group>"; };
 		97E936CD2356286D00154A7C /* NetworkHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkHelper.swift; sourceTree = "<group>"; };
 		97E936CF2356288D00154A7C /* DarkSkyAPIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyAPIManager.swift; sourceTree = "<group>"; };
 		97E936D22356298F00154A7C /* DarkSkyWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkSkyWeather.swift; sourceTree = "<group>"; };
@@ -88,13 +88,11 @@
 		548CE050234D33B500B5177D /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
-				97301F9E2357784600288B13 /* UserDefaultsWrapper.swift */,
+				97301FA023577AED00288B13 /* Other */,
 				548CE051234D33B500B5177D /* AppDelegate.swift */,
 				548CE053234D33B500B5177D /* SceneDelegate.swift */,
-				97E936CA2356271400154A7C /* Secret.swift */,
 				9776E91D2356BD5100E48393 /* Controllers */,
 				9776E9162356BA2300E48393 /* Persistence */,
-				548CE065234D33E600B5177D /* ZipCodeHelper.swift */,
 				97E936D12356297D00154A7C /* Models */,
 				97E936CC2356280500154A7C /* Network */,
 				548CE057234D33B500B5177D /* Main.storyboard */,
@@ -103,6 +101,16 @@
 				548CE05F234D33B600B5177D /* Info.plist */,
 			);
 			path = WeatherApp;
+			sourceTree = "<group>";
+		};
+		97301FA023577AED00288B13 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				97301F9E2357784600288B13 /* UserDefaultsWrapper.swift */,
+				97E936CA2356271400154A7C /* Secret.swift */,
+				548CE065234D33E600B5177D /* ZipCodeHelper.swift */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		9776E9162356BA2300E48393 /* Persistence */ = {
