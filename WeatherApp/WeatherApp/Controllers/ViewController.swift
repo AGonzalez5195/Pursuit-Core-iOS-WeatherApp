@@ -160,6 +160,18 @@ extension ViewController: UICollectionViewDataSource {
     }
 }
 
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+      
+        let detailVC = DetailViewController()
+        let selectedForecast = weatherData[indexPath.row]
+        detailVC.currentForecast = selectedForecast
+        
+        self.navigationController?
+            .pushViewController(detailVC, animated: true)
+    }
+}
+
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150  , height: 150)

@@ -75,8 +75,8 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     
     func configureCell(from weather: WeatherForecast) {
         backgroundColor = .clear
-        highTemperatureLabel.text = "High: \(weather.temperatureHigh.roundTo(places: 1))"
-        lowTemperatureLabel.text = "Low: \(weather.temperatureLow.roundTo(places: 1))"
+        highTemperatureLabel.text = "High: \(weather.temperatureHigh.roundTo(places: 1))°F"
+        lowTemperatureLabel.text = "Low: \(weather.temperatureLow.roundTo(places: 1))°F"
         dateLabel.text = weather.convertedTime
         [highTemperatureLabel, lowTemperatureLabel, dateLabel].forEach{$0.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)}
         weatherImage.image = UIImage(named: "\(weather.icon)")
