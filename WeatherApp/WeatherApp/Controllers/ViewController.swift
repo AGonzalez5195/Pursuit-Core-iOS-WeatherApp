@@ -138,10 +138,14 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
         addSubviews()
         setConstraints()
         loadData()
-        view.backgroundColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
+        
+        guard let savedZipCode = UserDefaultsWrapper.shared.getZipCode() else { return }
+        zipCode = savedZipCode
+        zipCodeTextField.text = savedZipCode
     }
 }
 
@@ -162,7 +166,7 @@ extension ViewController: UICollectionViewDataSource {
 
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-      
+        
         let detailVC = DetailViewController()
         let selectedForecast = weatherData[indexPath.row]
         detailVC.currentForecast = selectedForecast
@@ -182,6 +186,10 @@ extension ViewController: UICollectionViewDelegateFlowLayout {
 extension ViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         zipCode = textField.text
+        if let zip = zipCode {
+            UserDefaultsWrapper.shared.store(zipCode: zip)
+        }
+        
         return true
     }
 }

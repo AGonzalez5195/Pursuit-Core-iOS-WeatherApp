@@ -21,6 +21,7 @@
 		97301F992356E55100288B13 /* PhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97301F982356E55100288B13 /* PhotosViewController.swift */; };
 		97301F9B2356E58900288B13 /* PixabayCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97301F9A2356E58900288B13 /* PixabayCollectionViewCell.swift */; };
 		97301F9D2356ED8100288B13 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97301F9C2356ED8100288B13 /* FavoritesViewController.swift */; };
+		97301F9F2357784600288B13 /* UserDefaultsWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97301F9E2357784600288B13 /* UserDefaultsWrapper.swift */; };
 		9776E9182356BA3400E48393 /* PersistenceHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9776E9172356BA3400E48393 /* PersistenceHelper.swift */; };
 		9776E91F2356BD6500E48393 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9776E91E2356BD6500E48393 /* DetailViewController.swift */; };
 		97E936CB2356271400154A7C /* Secret.swift in Sources */ = {isa = PBXBuildFile; fileRef = 97E936CA2356271400154A7C /* Secret.swift */; };
@@ -47,6 +48,7 @@
 		97301F982356E55100288B13 /* PhotosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosViewController.swift; sourceTree = "<group>"; };
 		97301F9A2356E58900288B13 /* PixabayCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PixabayCollectionViewCell.swift; sourceTree = "<group>"; };
 		97301F9C2356ED8100288B13 /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		97301F9E2357784600288B13 /* UserDefaultsWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserDefaultsWrapper.swift; path = Controllers/UserDefaultsWrapper.swift; sourceTree = "<group>"; };
 		9776E9172356BA3400E48393 /* PersistenceHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceHelper.swift; sourceTree = "<group>"; };
 		9776E91E2356BD6500E48393 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		97E936CA2356271400154A7C /* Secret.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secret.swift; sourceTree = "<group>"; };
@@ -86,6 +88,7 @@
 		548CE050234D33B500B5177D /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				97301F9E2357784600288B13 /* UserDefaultsWrapper.swift */,
 				548CE051234D33B500B5177D /* AppDelegate.swift */,
 				548CE053234D33B500B5177D /* SceneDelegate.swift */,
 				97E936CA2356271400154A7C /* Secret.swift */,
@@ -219,6 +222,7 @@
 				97301F992356E55100288B13 /* PhotosViewController.swift in Sources */,
 				97E936D32356298F00154A7C /* DarkSkyWeather.swift in Sources */,
 				9776E91F2356BD6500E48393 /* DetailViewController.swift in Sources */,
+				97301F9F2357784600288B13 /* UserDefaultsWrapper.swift in Sources */,
 				548CE066234D33E600B5177D /* ZipCodeHelper.swift in Sources */,
 				9776E9182356BA3400E48393 /* PersistenceHelper.swift in Sources */,
 				97E936CB2356271400154A7C /* Secret.swift in Sources */,
