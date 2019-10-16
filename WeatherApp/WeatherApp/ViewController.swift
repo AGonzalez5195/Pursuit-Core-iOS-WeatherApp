@@ -38,9 +38,9 @@ class ViewController: UIViewController {
     
     private func setCollectionViewConstraints(){
         NSLayoutConstraint.activate([
-            weatherCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 100),
+            weatherCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 170),
             weatherCollectionView.widthAnchor.constraint(equalToConstant: weatherCollectionView.frame.width),
-            weatherCollectionView.heightAnchor.constraint(equalToConstant: 180),
+            weatherCollectionView.heightAnchor.constraint(equalToConstant: 155),
             weatherCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
     }
