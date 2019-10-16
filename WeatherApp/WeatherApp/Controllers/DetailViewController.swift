@@ -117,13 +117,13 @@ class DetailViewController: UIViewController {
         if photos.isEmpty == true {
             locationImageView.image = UIImage(named: "\(currentForecast.icon)")
             locationImageView.isUserInteractionEnabled = false
-     
+            
         } else {
             ImageHelper.shared.getImage(urlStr: photos[0].largeImageURL) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .failure(let error):
-                       print(error)
+                        print(error)
                     case .success(let imageFromOnline):
                         self.locationImageView.image = imageFromOnline
                     }
@@ -189,7 +189,16 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.barStyle = .default
+
+        tabBarController?.tabBar.backgroundColor = .white
+        tabBarController?.tabBar.barTintColor = .white
+        tabBarController?.tabBar.barStyle = .default
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
         configureUI()

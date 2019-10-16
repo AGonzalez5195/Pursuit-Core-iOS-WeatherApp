@@ -28,17 +28,33 @@ class PixabayCollectionViewCell: UICollectionViewCell {
         button.setTitleColor(.purple, for: .normal)
         button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
         button.showsTouchWhenHighlighted = true
-        button.addTarget(self, action: #selector(favoriteButtonPressed(sender:)), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside)
         return button
     }()
     
+    lazy var deleteButton: UIButton = {
+          let button = UIButton()
+          button.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0.8013431079)
+          button.setTitleColor(.black, for: .normal)
+          button.layer.cornerRadius = 10
+          button.translatesAutoresizingMaskIntoConstraints = false
+          self.addSubview(button)
+          button.setTitle("Delete", for: .normal)
+          button.setTitleColor(.purple, for: .normal)
+          button.titleLabel?.font = UIFont.systemFont(ofSize: 16)
+          button.showsTouchWhenHighlighted = true
+          button.addTarget(self, action: #selector(buttonPressed(sender:)), for: .touchUpInside)
+          return button
+      }()
+    
     var buttonFunction: (()->())?
     
-    @objc func favoriteButtonPressed(sender: UIButton) {
+    @objc func buttonPressed(sender: UIButton) {
         if let closure = buttonFunction {
             closure()
         }
     }
+    
     
     private func setConstraints(){
         NSLayoutConstraint.activate([
@@ -50,18 +66,21 @@ class PixabayCollectionViewCell: UICollectionViewCell {
             favoriteButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
             favoriteButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             favoriteButton.widthAnchor.constraint(equalToConstant: 60),
-            favoriteButton.heightAnchor.constraint(equalToConstant: 40)
+            favoriteButton.heightAnchor.constraint(equalToConstant: 40),
+            
+            deleteButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -30),
+            deleteButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            deleteButton.widthAnchor.constraint(equalToConstant: 60),
+            deleteButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
-    
     
     
     func configureCell(from photo: PixabayPhoto) {
         ImageHelper.shared.getImage(urlStr: photo.largeImageURL) { (result) in
             DispatchQueue.main.async {
                 switch result {
-                case .failure(let error):
-                    self.locationImageView.image = #imageLiteral(resourceName: "sunny")
+                case .failure(_): ()
                 case .success(let imageFromOnline):
                     self.locationImageView.image = imageFromOnline
                 }

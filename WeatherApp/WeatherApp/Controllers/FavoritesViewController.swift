@@ -55,8 +55,11 @@ class FavoritesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-          loadData()
-      }
+        loadData()
+        tabBarController?.tabBar.backgroundColor = .black
+        tabBarController?.tabBar.barStyle = .black
+        tabBarController?.tabBar.barTintColor = .black
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,6 +78,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
         let specificPhoto = savedPhotos[indexPath.row]
         photoCell.configureCell(from: specificPhoto)
         photoCell.favoriteButton.isHidden = true
+        
         return photoCell
     }
 }

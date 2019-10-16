@@ -54,6 +54,7 @@ class ViewController: UIViewController {
     private var zipCode: String? {
         didSet {
             loadLatLongNameFromZip()
+            weatherCollectionView.isHidden = false
         }
     }
     
@@ -108,7 +109,7 @@ class ViewController: UIViewController {
     }
     
     private func loadData() {
-        DarkSkyAPIManager.shared.getForecast(lat: latitude ?? 40.7128, long: longitude ?? -74.0060, completionHandler: { (result) in
+        DarkSkyAPIManager.shared.getForecast(lat: latitude ?? 98765, long: longitude ?? 98765, completionHandler: { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let weatherDataFromOnline):
@@ -136,6 +137,16 @@ class ViewController: UIViewController {
         })
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.barTintColor = .white
+        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.barStyle = .default
+        
+        tabBarController?.tabBar.backgroundColor = .white
+        tabBarController?.tabBar.barStyle = .default
+        tabBarController?.tabBar.barTintColor = .white
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
@@ -143,7 +154,9 @@ class ViewController: UIViewController {
         setConstraints()
         loadData()
         
-        guard let savedZipCode = UserDefaultsWrapper.shared.getZipCode() else { return }
+        guard let savedZipCode = UserDefaultsWrapper.shared.getZipCode() else {
+            weatherCollectionView.isHidden = true
+            return }
         zipCode = savedZipCode
         zipCodeTextField.text = savedZipCode
     }

@@ -60,10 +60,22 @@ class PhotosViewController: UIViewController {
            return true
        }
     
+    override func viewWillAppear(_ animated: Bool) {
+        navigationController?.navigationBar.backgroundColor = .black
+        navigationController?.navigationBar.barStyle = .black
+        navigationController?.navigationBar.barTintColor = .black
+        
+        tabBarController?.tabBar.backgroundColor = .black
+        tabBarController?.tabBar.barStyle = .black
+        tabBarController?.tabBar.barTintColor = .black
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         setCollectionViewConstraints()
+        navigationController?.navigationBar.backgroundColor = .black
+        navigationController?.navigationBar.barStyle = .black
     }
 }
 
@@ -78,6 +90,7 @@ extension PhotosViewController: UICollectionViewDataSource {
         let specificPhoto = photos[indexPath.row]
         photoCell.configureCell(from: specificPhoto)
         photoCell.buttonFunction = { self.savePhoto(specificPhoto: specificPhoto); self.presentAlert() }
+        photoCell.deleteButton.isHidden = true
         return photoCell
     }
 }
