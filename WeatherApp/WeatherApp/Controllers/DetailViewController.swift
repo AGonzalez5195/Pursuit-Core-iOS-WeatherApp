@@ -64,7 +64,10 @@ class DetailViewController: UIViewController {
     
     lazy var locationImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .clear
+        imageView.isUserInteractionEnabled = true
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(self.imageTapped(_:)))
+        imageView.addGestureRecognizer(tapGesture)
         return imageView
     }()
     
@@ -89,6 +92,14 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @objc func imageTapped(_ sender: UITapGestureRecognizer? = nil) {
+    
+        let photosVC = PhotosViewController()
+        photosVC.photos = photos
+        
+        self.navigationController?
+            .pushViewController(photosVC, animated: true)
+    }
     
     private func loadPixabayData(){
         let searchQuery = locationName.replacingOccurrences(of: " ", with: "+")

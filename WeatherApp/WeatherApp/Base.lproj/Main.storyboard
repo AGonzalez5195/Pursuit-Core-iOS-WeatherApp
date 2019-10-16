@@ -37,5 +37,20 @@
             </objects>
             <point key="canvasLocation" x="714" y="106"/>
         </scene>
+        <!--Photos View Controller-->
+        <scene sceneID="toE-rE-lAE">
+            <objects>
+                <viewController id="VzN-R1-d5B" customClass="PhotosViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Jeb-Gs-lRP">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bvF-U0-5xa"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fwA-Ys-NWL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1609" y="106"/>
+        </scene>
     </scenes>
 </document>

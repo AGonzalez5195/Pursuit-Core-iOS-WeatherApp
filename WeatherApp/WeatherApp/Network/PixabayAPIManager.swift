@@ -14,7 +14,7 @@ class PixabayAPIManager {
     static let shared = PixabayAPIManager()
     
     func getPhotos(searchQuery: String, completionHandler: @escaping (Result<[PixabayPhoto], AppError>) -> Void) {
-        let urlStr = "https://pixabay.com/api/?key=\(Secret.pixabayAPIKey)&per_page=20&q=\(searchQuery)"
+        let urlStr = "https://pixabay.com/api/?key=\(Secret.pixabayAPIKey)&per_page=50&q=\(searchQuery)"
         
         guard let url = URL(string: urlStr) else {
             completionHandler(.failure(.badURL))
