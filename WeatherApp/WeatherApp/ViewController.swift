@@ -29,14 +29,14 @@ class ViewController: UIViewController {
     
     lazy var titleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Weather Forecast For _____"
+        label.text = "Weather Forecast"
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textAlignment = .center
         return label
     }()
     
     lazy var zipCodeTextField: UITextField = {
-       let textView = UITextField()
+        let textView = UITextField()
         textView.translatesAutoresizingMaskIntoConstraints = false
         textView.placeholder = "Enter Zipcode..."
         textView.borderStyle = .line
@@ -45,23 +45,37 @@ class ViewController: UIViewController {
         return textView
     }()
     
-    var weatherData = [WeatherForecast]() {
+    private var weatherData = [WeatherForecast]() {
         didSet {
             weatherCollectionView.reloadData()
         }
     }
     
+    private var zipCode: String? {
+        didSet {
+            loadLatLongNameFromZip()
+        }
+    }
+    
+    private var locationName : String? {
+        didSet{
+            titleLabel.text = "Weekly Forecast For \(locationName ?? "BlahBlah")"
+        }
+    }
+    
+    private var latitude: Double?
+    private var longitude: Double?
+    
     private func setConstraints() {
         setCollectionViewConstraints()
         setTitleLabelConstraints()
         setTextFieldConstraints()
-        
     }
     
     private func setCollectionViewConstraints() {
         NSLayoutConstraint.activate([
             weatherCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 170),
-               weatherCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            weatherCollectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             weatherCollectionView.widthAnchor.constraint(equalToConstant: weatherCollectionView.frame.width),
             weatherCollectionView.heightAnchor.constraint(equalToConstant: 155)
         ])
@@ -93,14 +107,29 @@ class ViewController: UIViewController {
     }
     
     private func loadData() {
-        DarkSkyAPIManager.shared.getElements(completionHandler: { (result) in
+        DarkSkyAPIManager.shared.getForecast(lat: latitude ?? 40.7128, long: longitude ?? -74.0060, completionHandler: { (result) in
             DispatchQueue.main.async {
                 switch result {
                 case .success(let weatherDataFromOnline):
                     self.weatherData = weatherDataFromOnline
                     
-                case .failure(let error):
-                    print(error)
+                case .failure(_): ()
+                }
+            }
+        })
+    }
+    
+    private func loadLatLongNameFromZip(){
+        ZipCodeHelper.getLatLongAndName(fromZipCode: zipCode!, completionHandler: { (result) in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let zipData):
+                    self.locationName = zipData.name
+                    self.longitude = zipData.long
+                    self.latitude = zipData.lat
+                    self.loadData()
+                    
+                case .failure(_): ()
                 }
             }
         })
@@ -134,5 +163,12 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 150  , height: 150)
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        zipCode = textField.text
+        return true
     }
 }

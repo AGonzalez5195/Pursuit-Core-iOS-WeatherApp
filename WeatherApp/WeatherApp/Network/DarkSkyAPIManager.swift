@@ -28,8 +28,8 @@ class DarkSkyAPIManager {
     
     static let shared = DarkSkyAPIManager()
     
-    func getElements(completionHandler: @escaping (Result<[WeatherForecast], AppError>) -> Void) {
-        let urlStr = "https://api.darksky.net/forecast/e604a0646e3608c5efdf408fa33ac8c2/40.7128,-74.0060"
+    func getForecast(lat: Double, long: Double, completionHandler: @escaping (Result<[WeatherForecast], AppError>) -> Void) {
+        let urlStr = "https://api.darksky.net/forecast/\(Secret.darkSkyAPIKey)/\(lat),\(long)"
         guard let url = URL(string: urlStr) else {
             completionHandler(.failure(.badURL))
             return
