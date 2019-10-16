@@ -37,12 +37,10 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     lazy var weatherImage: UIImageView = {
        let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .blue
         return image
     }()
     
     private func addSubviews(){
-        backgroundColor = #colorLiteral(red: 1, green: 0.9782751203, blue: 0.9735108018, alpha: 1)
         
         let UIElements = [highTemperatureLabel, lowTemperatureLabel, dateLabel, weatherImage]
         
@@ -76,12 +74,11 @@ class WeatherCollectionViewCell: UICollectionViewCell {
     }
     
     func configureCell(from weather: WeatherForecast) {
-        highTemperatureLabel.text = "High: \(weather.temperatureHigh)"
-        lowTemperatureLabel.text = "Low: \(weather.temperatureLow)"
+        backgroundColor = .clear
+        highTemperatureLabel.text = "High: \(weather.temperatureHigh.roundTo(places: 1))"
+        lowTemperatureLabel.text = "Low: \(weather.temperatureLow.roundTo(places: 1))"
         dateLabel.text = weather.convertedTime
         [highTemperatureLabel, lowTemperatureLabel, dateLabel].forEach{$0.textColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)}
-        
-    
         weatherImage.image = UIImage(named: "\(weather.icon)")
     }
     
@@ -97,4 +94,12 @@ class WeatherCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+}
+
+
+extension Double {
+    func roundTo(places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
+    }
 }
