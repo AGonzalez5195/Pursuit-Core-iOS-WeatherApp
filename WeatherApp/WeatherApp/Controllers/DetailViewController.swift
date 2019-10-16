@@ -78,6 +78,14 @@ class DetailViewController: UIViewController {
         return label
     }()
     
+    lazy var saveButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveButtonPressed))
+       
+        
+        return button
+    }()
+    
+    
     var locationName = String() {
         didSet {
             titleLabel.text = "Weather Forecast For \(locationName) for \(currentForecast.convertedTime)"
@@ -86,11 +94,23 @@ class DetailViewController: UIViewController {
     
     var currentForecast: WeatherForecast!
     
-    var photos = [PixabayPhoto]() {
+    var photos = [PixabayPhoto]()
+      
+    var presentedPhoto = PixabayPhoto(largeImageURL: "") {
         didSet {
             loadImage()
         }
     }
+    
+    
+    @objc func saveButtonPressed() {
+        let favoritedPhoto = PixabayPhoto(largeImageURL: presentedPhoto.largeImageURL)
+        do {
+            try? PixabayPhotoPersistenceHelper.manager.save(newPhoto: favoritedPhoto)
+        }
+        presentAlert()
+    }
+    
     
     @objc func imageTapped(_ sender: UITapGestureRecognizer? = nil) {
         
@@ -101,6 +121,7 @@ class DetailViewController: UIViewController {
             .pushViewController(photosVC, animated: true)
     }
     
+    
     private func loadPixabayData(){
         let searchQuery = locationName.replacingOccurrences(of: " ", with: "+")
         PixabayAPIManager.shared.getPhotos(searchQuery: searchQuery, completionHandler: {
@@ -108,6 +129,7 @@ class DetailViewController: UIViewController {
             switch result {
             case .success(let pixabayPhotoData):
                 self.photos = pixabayPhotoData
+                self.presentedPhoto = self.photos.randomElement()!
             case .failure(_): ()
             }
         })
@@ -119,19 +141,26 @@ class DetailViewController: UIViewController {
             locationImageView.isUserInteractionEnabled = false
             
         } else {
-            ImageHelper.shared.getImage(urlStr: photos[0].largeImageURL) { (result) in
+            ImageHelper.shared.getImage(urlStr: presentedPhoto.largeImageURL) { (result) in
                 DispatchQueue.main.async {
                     switch result {
                     case .failure(let error):
                         print(error)
                     case .success(let imageFromOnline):
+                        
                         self.locationImageView.image = imageFromOnline
+                        
                     }
                 }
             }
         }
     }
     
+    private func presentAlert() {
+          let alertVC = UIAlertController(title: nil, message: "Photo saved", preferredStyle: .alert)
+          alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+          present(alertVC, animated: true, completion: nil)
+      }
     
     
     private func configureUI() {
@@ -190,12 +219,12 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
         navigationController?.navigationBar.barStyle = .default
-
-        tabBarController?.tabBar.backgroundColor = .white
-        tabBarController?.tabBar.barTintColor = .white
+        
+        tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
+        tabBarController?.tabBar.barTintColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
         tabBarController?.tabBar.barStyle = .default
         
     }
@@ -205,5 +234,6 @@ class DetailViewController: UIViewController {
         addSubViews()
         setConstraints()
         loadPixabayData()
+         self.navigationItem.rightBarButtonItem = saveButton
     }
 }

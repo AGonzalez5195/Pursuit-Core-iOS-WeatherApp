@@ -35,7 +35,7 @@ class FavoritesViewController: UIViewController {
     
     private func loadData(){
         do {
-            savedPhotos = try PixabayPhotoPersistenceHelper.manager.getPhoto()
+            savedPhotos = try PixabayPhotoPersistenceHelper.manager.getPhoto().reversed()
         } catch {
             print(error)
         }
@@ -56,9 +56,9 @@ class FavoritesViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadData()
-        tabBarController?.tabBar.backgroundColor = .black
-        tabBarController?.tabBar.barStyle = .black
-        tabBarController?.tabBar.barTintColor = .black
+        tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        tabBarController?.tabBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        tabBarController?.tabBar.barStyle = .default
     }
     
     override func viewDidLoad() {

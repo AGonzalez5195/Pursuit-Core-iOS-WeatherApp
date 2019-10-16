@@ -25,7 +25,7 @@ class PhotosViewController: UIViewController {
             collectionView.register(PixabayCollectionViewCell.self, forCellWithReuseIdentifier: "photoCell")
             self.view.addSubview(collectionView)
         }
-         return collectionView
+        return collectionView
     }()
     
     var photos = [PixabayPhoto]() {
@@ -57,17 +57,17 @@ class PhotosViewController: UIViewController {
     }
     
     override var prefersStatusBarHidden: Bool {
-           return true
-       }
+        return true
+    }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.backgroundColor = .black
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         navigationController?.navigationBar.barStyle = .black
-        navigationController?.navigationBar.barTintColor = .black
         
-        tabBarController?.tabBar.backgroundColor = .black
+        tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+        tabBarController?.tabBar.barTintColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
         tabBarController?.tabBar.barStyle = .black
-        tabBarController?.tabBar.barTintColor = .black
     }
     
     override func viewDidLoad() {

@@ -138,13 +138,13 @@ class ViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        navigationController?.navigationBar.barTintColor = .white
-        navigationController?.navigationBar.backgroundColor = .white
+        navigationController?.navigationBar.barTintColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
+        navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
         navigationController?.navigationBar.barStyle = .default
         
-        tabBarController?.tabBar.backgroundColor = .white
+        tabBarController?.tabBar.backgroundColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
         tabBarController?.tabBar.barStyle = .default
-        tabBarController?.tabBar.barTintColor = .white
+        tabBarController?.tabBar.barTintColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
     }
     
     override func viewDidLoad() {
@@ -202,7 +202,7 @@ extension ViewController: UITextFieldDelegate {
         if let zip = zipCode {
             UserDefaultsWrapper.shared.store(zipCode: zip)
         }
-        
+        textField.resignFirstResponder()
         return true
     }
 }
