@@ -17,9 +17,10 @@ struct Weather: Codable {
 }
 
 struct WeatherForecast: Codable {
+    let icon: String
     let temperatureHigh: Double
     let temperatureLow: Double
-    var time: Int
+    let time: Int
     var convertedTime: String {
     get {
         return Date(timeIntervalSince1970: TimeInterval(time)).description.components(separatedBy: " ")[0]
