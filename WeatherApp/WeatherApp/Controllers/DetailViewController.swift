@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class DetailViewController: UIViewController {
     
@@ -80,10 +81,17 @@ class DetailViewController: UIViewController {
     
     lazy var saveButton: UIBarButtonItem = {
         let button = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(self.saveButtonPressed))
-       
-        
         return button
     }()
+    
+    lazy var blackOutView: UIView = {
+        let view = UIView()
+        view.backgroundColor = .black
+        view.alpha = 0.0
+        return view
+    }()
+    
+    var spooky: AVAudioPlayer?
     
     
     var locationName = String() {
@@ -95,7 +103,7 @@ class DetailViewController: UIViewController {
     var currentForecast: WeatherForecast!
     
     var photos = [PixabayPhoto]()
-      
+    
     var presentedPhoto = PixabayPhoto(largeImageURL: "") {
         didSet {
             loadImage()
@@ -135,7 +143,7 @@ class DetailViewController: UIViewController {
         })
     }
     
-  
+    
     
     private func loadImage() {
         if photos.isEmpty == true {
@@ -149,22 +157,55 @@ class DetailViewController: UIViewController {
                     case .failure(let error):
                         print(error)
                     case .success(let imageFromOnline):
-                        UIView.transition(with: self.locationImageView, duration: 4, options: [.transitionCrossDissolve, .curveEaseInOut], animations: {
+                        UIView.transition(with: self.locationImageView, duration: 1.1, options: [.transitionCrossDissolve, .curveEaseInOut], animations: {
                             self.locationImageView.image = imageFromOnline
                         }, completion: nil)
-                        
+//                        self.hi()
+                        //Uncomment out the above line and hover on the detailVC if you wanna see a cute bunny picture :) 
                     }
                 }
             }
         }
     }
+    private func playSp00kyMusic(){
+       let path = Bundle.main.path(forResource: "spooky.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+
+        do {
+            spooky = try AVAudioPlayer(contentsOf: url)
+            spooky?.play()
+        } catch {
+            
+        }
+    }
     
     private func presentAlert() {
-          let alertVC = UIAlertController(title: nil, message: "Photo saved", preferredStyle: .alert)
-          alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-          present(alertVC, animated: true, completion: nil)
-      }
+        let alertVC = UIAlertController(title: nil, message: "Photo saved", preferredStyle: .alert)
+        alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        present(alertVC, animated: true, completion: nil)
+    }
     
+    private func hi() {
+        UIView.animateKeyframes(withDuration: 15, delay: 0, options: [.calculationModeCubic], animations: {
+            UIView.addKeyframe(withRelativeStartTime: 0, relativeDuration: 10) {
+                self.blackOutView.alpha = 1.0
+            }
+        }, completion: {(action) in
+            self.locationImageView.image = #imageLiteral(resourceName: "cute")
+            self.view.backgroundColor = .black
+            self.labelStackView.isHidden = true
+            self.titleLabel.font = UIFont.boldSystemFont(ofSize: 35)
+            self.titleLabel.textColor = .red
+            self.titleLabel.text = "I'M GOING TO KILL YOU"
+            self.playSp00kyMusic()
+        })
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 15) {
+            UIView.animateKeyframes(withDuration: 10, delay: 0, options: [.calculationModeCubic], animations: {
+                self.blackOutView.alpha = 0.0
+            }, completion: nil)
+        }
+    }
     
     private func configureUI() {
         view.backgroundColor = #colorLiteral(red: 1, green: 0.9833787084, blue: 0.8849565387, alpha: 1)
@@ -210,12 +251,22 @@ class DetailViewController: UIViewController {
         configureStackView()
         configureImageView()
         configureTitleLabelConstraints()
+        setBlackOutViewConstraints()
+    }
+    
+    private func setBlackOutViewConstraints(){
+        NSLayoutConstraint.activate([
+            blackOutView.widthAnchor.constraint(equalTo: view.widthAnchor),
+            blackOutView.heightAnchor.constraint(equalTo: view.heightAnchor),
+            blackOutView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            blackOutView.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
     
     private func addSubViews() {
-        [labelStackView, locationImageView, titleLabel].forEach{$0.translatesAutoresizingMaskIntoConstraints = false}
+        [labelStackView, locationImageView, titleLabel, blackOutView].forEach{$0.translatesAutoresizingMaskIntoConstraints = false}
         
-        let UIElements = [labelStackView, locationImageView, titleLabel]
+        let UIElements = [labelStackView, locationImageView, titleLabel, blackOutView]
         for UIElement in UIElements {
             self.view.addSubview(UIElement)
         }
@@ -237,6 +288,6 @@ class DetailViewController: UIViewController {
         addSubViews()
         setConstraints()
         loadPixabayData()
-         self.navigationItem.rightBarButtonItem = saveButton
+        self.navigationItem.rightBarButtonItem = saveButton
     }
 }

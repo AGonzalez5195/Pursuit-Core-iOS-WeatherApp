@@ -16,15 +16,13 @@ class PhotosViewController: UIViewController {
         collectionView.backgroundColor = .clear
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
-        let scrollDirection = UICollectionView.ScrollDirection.vertical
-        if let collectionViewFlowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            collectionViewFlowLayout.scrollDirection = scrollDirection
-            
-            collectionView.dataSource = self
-            collectionView.delegate = self
-            collectionView.register(PixabayCollectionViewCell.self, forCellWithReuseIdentifier: "photoCell")
-            self.view.addSubview(collectionView)
-        }
+        
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(PixabayCollectionViewCell.self, forCellWithReuseIdentifier: "photoCell")
+        self.view.addSubview(collectionView)
+        
         return collectionView
     }()
     

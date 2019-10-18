@@ -21,8 +21,6 @@ enum AppError: Error {
     case other(rawError: Error)
 }
 
-
-
 class DarkSkyAPIManager {
     private init() {}
     
@@ -30,6 +28,7 @@ class DarkSkyAPIManager {
     
     func getForecast(lat: Double, long: Double, completionHandler: @escaping (Result<[WeatherForecast], AppError>) -> Void) {
         let urlStr = "https://api.darksky.net/forecast/\(Secret.darkSkyAPIKey)/\(lat),\(long)"
+        print(urlStr)
         guard let url = URL(string: urlStr) else {
             completionHandler(.failure(.badURL))
             return

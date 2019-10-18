@@ -16,14 +16,13 @@ class FavoritesViewController: UIViewController {
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         let scrollDirection = UICollectionView.ScrollDirection.vertical
-        if let collectionViewFlowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            collectionViewFlowLayout.scrollDirection = scrollDirection
-            
-            collectionView.dataSource = self
-            collectionView.delegate = self
-            collectionView.register(PixabayCollectionViewCell.self, forCellWithReuseIdentifier: "photoCell")
-            self.view.addSubview(collectionView)
-        }
+        
+        
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(PixabayCollectionViewCell.self, forCellWithReuseIdentifier: "photoCell")
+        self.view.addSubview(collectionView)
+        
         return collectionView
     }()
     
@@ -78,6 +77,7 @@ extension FavoritesViewController: UICollectionViewDataSource {
         let specificPhoto = savedPhotos[indexPath.row]
         photoCell.configureCell(from: specificPhoto)
         photoCell.favoriteButton.isHidden = true
+        photoCell.deleteButton.isHidden = true
         
         return photoCell
     }
